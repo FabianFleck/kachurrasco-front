@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Produto } from '../produto';
-import { ProdutoService } from '../produto.service';
+
+import { Produto } from './produto';
+import { ProdutoService } from '../service/produto/produto.service';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -13,23 +14,19 @@ export class ListarProdutosComponent implements OnInit {
   produtos: Produto[];
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private service: ProdutoService) { }
 
   ngOnInit() {
-      // this.service.getPosts()
-      //   .subscribe(data => console.log(data));
-      
-      this.service.getProducts()
-        .subscribe(data => console.log(data));
-      
+    this.service.getAll()
+      .subscribe(data => this.produtos = data);
   }
-  
+
   editarProduto(produto: Produto) {
     this.router.navigate(['/produtos', produto.idProduto]);
   }
 
-  novo() {
+  novoProduto() {
     this.router.navigate(['/produtos/novo']);
   }
 }

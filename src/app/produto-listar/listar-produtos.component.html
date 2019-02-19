@@ -1,22 +1,20 @@
 <div class="ibox-content">
-  <button class="btn btn-primary" type="button" (click)="novo()">Novo</button>   
+  <button class="btn btn-primary" type="button" (click)="novoProduto()">Novo</button>
   <table class="table">
     <thead>
       <tr>
         <th>Nome</th>
-        <th>Tipo</th>
         <th>Preço</th>
         <th>Quantidade</th>
-        <th>Status</th>
-      </tr>
+        <th>Tipo</th>
+       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let produto of produtos">
         <td><a href="javascript:;" (click)="editarProduto(produto)">{{produto.nome}}</a></td>
-        <td>{{produto.tipoProduto}}</td>
         <td>{{produto.preco}}</td>
         <td>{{produto.quantidade}}</td>
-        <td>{{produto.status}}</td>
+        <td>{{produto.tipoProduto}}</td>
       </tr>
     </tbody>
   </table>

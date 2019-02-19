@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Cerveja } from '../cerveja';
 import { CervejaService } from '../cerveja.service';
 
@@ -13,7 +14,7 @@ export class ListarCervejasComponent implements OnInit {
   cervejas: Cerveja[];
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private service: CervejaService) {
      }
 
@@ -22,11 +23,10 @@ export class ListarCervejasComponent implements OnInit {
   }
 
   editarCerveja(cerveja: Cerveja) {
-    this.router.navigate(['/cervejas', cerveja.id]);
+    this.router.navigate(['/cer', cerveja.id]);
   }
 
   novo() {
     this.router.navigate(['/cervejas/novo']);
   }
-
 }

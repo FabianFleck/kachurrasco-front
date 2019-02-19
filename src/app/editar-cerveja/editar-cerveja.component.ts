@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CervejaService } from '../cerveja.service';
+
 import { Cerveja } from '../cerveja';
+import { CervejaService } from '../cerveja.service';
 
 @Component({
   selector: 'app-editar-cerveja',
@@ -14,16 +15,17 @@ export class EditarCervejaComponent implements OnInit {
   @Input()
   cerveja: Cerveja = new Cerveja();
 
-  novo: boolean = false;
+  novo = false;
 
   constructor(
-    private service: CervejaService, 
-    private route: ActivatedRoute, 
+    private service: CervejaService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.params['id'];
-    if(id) {
+    const stringId = 'id';
+    const id = +this.route.snapshot.params[stringId];
+    if (id) {
       this.cerveja = this.service.obterCerveja(id);
     } else {
       this.novo = true;
